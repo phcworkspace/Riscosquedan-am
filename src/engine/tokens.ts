@@ -5,9 +5,14 @@
 // Aqui ficam só os valores que o motor lê em runtime — o canvas e os SVGs não
 // enxergam utilitários do Tailwind.
 
-export type Banda = 'grave' | 'medio' | 'agudo' | 'brilho';
+import type { Banda } from './tipos';
 
-export const BANDAS = [
+/**
+ * Metadados de UI por banda (nome exibido, cor, faixa de Hz).
+ * Não confundir com `BANDAS` de `./tipos` — aquele é só a ordem canônica
+ * (Banda[]) usada para iterar; este é o objeto rico para o painel e a legenda.
+ */
+export const BANDAS_INFO = [
   { id: 'grave',  nome: 'Grave',  cor: '#FF3B30', hz: [20, 150] },
   { id: 'medio',  nome: 'Médio',  cor: '#FFB300', hz: [150, 700] },
   { id: 'agudo',  nome: 'Agudo',  cor: '#0A84FF', hz: [700, 3200] },
