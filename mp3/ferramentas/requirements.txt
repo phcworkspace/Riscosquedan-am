@@ -1,0 +1,6 @@
+# Ferramentas de análise de faixas — protótipo "Riscos que Dançam"
+librosa>=0.11
+numpy>=1.26
+scipy>=1.11
+soundfile>=0.12
+# ffmpeg precisa estar instalado no sistema (não é pacote pip)

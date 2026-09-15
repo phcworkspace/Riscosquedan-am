@@ -1,0 +1,70 @@
+---
+description: Regras do motor — áudio, mapa da faixa, renderizador e comportamentos
+globs: src/engine/**/*.ts,src/engine/**/*.tsx
+alwaysApply: false
+---
+
+# Motor (`src/engine/`)
+
+TypeScript puro. **Nenhum import de React, Next ou Zustand aqui.**
+
+## Áudio — Web Audio puro, sem biblioteca
+
+- O `AudioContext` só nasce dentro de um gesto do usuário. Se vier `suspended`,
+  `await ctx.resume()`.
+- `AudioBufferSourceNode` é **descartável**: não dá para pausar e retomar o mesmo node,
+  nem mudar `loopStart` de forma confiável com ele tocando. Toda mudança de região,
+  seek ou play **recria o node**. Isso é o uso correto da API, não um contorno.
+- `posicao()` é **sempre calculada**, nunca acumulada:
+
+```ts
+posicao(): number {
+  if (!this.tocando) return this.pausadoEm;
+  const decorrido = this.ctx.currentTime - this.iniciadoEm;
+  if (!this.reg) return Math.min(this.offset + decorrido, this.duracao);
+  const janela = this.reg.fim - this.reg.inicio;
+  const dentro = (this.offset - this.reg.inicio + decorrido) % janela;
+  return this.reg.inicio + dentro;
+}
+```
+
+Somar `dt` a cada quadro acumula erro e sai de sincronia com o que se ouve em poucos
+minutos. Nunca faça isso.
+
+- Um `GainNode` só, entre o source e o destination. O volume vive nele.
+- `decodeAudioData` é a parte lenta: estado de carregando e feedback na tela.
+- Sem `AnalyserNode`. Sem FFT.
+
+## Mapa da faixa
+
+Pré-calculado em Python (`MP3/ferramentas/mapear_faixa.py`), servido como `.map.json`.
+Quatro curvas de banda (grave, medio, agudo, brilho) a 30fps, mais rms, picos, seções,
+ataques e um bloco `pulso` informativo.
+
+- Consulta por tempo com **interpolação linear** entre quadros (o mapa é 30fps, o
+  desenho é 60).
+- Somas acumuladas por banda calculadas **uma vez** no construtor, como `Float64Array`.
+- O objeto `dados` é somente leitura. Nunca mutar.
+
+## Renderizador
+
+- Derive a posição do playhead de `Audio.posicao()` a cada quadro. Nunca o contrário.
+- Culling por janela temporal: só desenha quem existe no instante atual.
+- Perfurações de película, grão e vinheta ficam em **DOM sobreposto**, não no canvas.
+- `devicePixelRatio` correto no dimensionamento do canvas.
+
+## Comportamentos
+
+Funções **puras** de `(elemento, v, t)`, onde `v` é o valor da banda naquele instante.
+Nenhuma guarda estado — é o que torna a animação determinística e o scrub possível.
+
+`girar` não pode acumular ângulo: integre a partir da soma acumulada da banda entre
+`elemento.entrada` e `t`.
+
+Todo elemento recebe um piso de ~15% de variação de brilho junto do comportamento
+escolhido, para que nada fique visualmente morto.
+
+## Teste de determinismo
+
+Anotar os valores em `t = 20.000`, tocar até o fim, voltar para `20.000`: precisam ser
+idênticos.

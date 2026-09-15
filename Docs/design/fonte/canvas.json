@@ -1,0 +1,114 @@
+{
+  "artboards": [
+    {
+      "file": "Entrada.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "PalcoVazio.dc.html",
+      "x": 1580,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Escutando.dc.html",
+      "x": 3160,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "ElementoSelecionado.dc.html",
+      "x": 0,
+      "y": 1050,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Main.dc.html",
+      "x": 1580,
+      "y": 1050,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Cinema.dc.html",
+      "x": 3160,
+      "y": 1050,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "FimDaAnimacao.dc.html",
+      "x": 0,
+      "y": 2100,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Tutorial.dc.html",
+      "x": 1580,
+      "y": 2100,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Sistema.dc.html",
+      "x": 3160,
+      "y": 2100,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Tablet.dc.html",
+      "x": 0,
+      "y": 3150,
+      "w": 834,
+      "h": 1112
+    },
+    {
+      "file": "Mobile.dc.html",
+      "x": 974,
+      "y": 3150,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "annotations": [
+    {
+      "id": "nota-fluxo",
+      "x": 0,
+      "y": -110,
+      "w": 460,
+      "text": "Fluxo principal — a pessoa entra, escolhe um trecho, escuta em loop e desenha nele."
+    },
+    {
+      "id": "nota-editor",
+      "x": 0,
+      "y": 940,
+      "w": 460,
+      "text": "O editor em uso. Main é a composição pronta; à direita, o Modo Cinema — o produto final."
+    },
+    {
+      "id": "nota-apoio",
+      "x": 0,
+      "y": 1990,
+      "w": 460,
+      "text": "Telas de apoio e o sistema visual."
+    },
+    {
+      "id": "nota-resp",
+      "x": 0,
+      "y": 3040,
+      "w": 460,
+      "text": "Responsivo. No tablet o painel vira barra; no celular, gaveta."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

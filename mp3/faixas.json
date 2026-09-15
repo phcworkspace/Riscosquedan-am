@@ -1,0 +1,41 @@
+[
+  {
+    "id": "pulso",
+    "titulo": "Pulso",
+    "caracter": "eletrônica minimalista",
+    "arquivo": "/audio/01-pulso.mp3",
+    "mapa": "/audio/01-pulso.map.json",
+    "duracaoSeg": 69.818,
+    "credito": {
+      "autor": "Sintetizado para este projeto",
+      "licenca": "Sem direitos de terceiros",
+      "url": ""
+    }
+  },
+  {
+    "id": "correnteza",
+    "titulo": "Correnteza",
+    "caracter": "instrumental orgânica",
+    "arquivo": "/audio/02-correnteza.mp3",
+    "mapa": "/audio/02-correnteza.map.json",
+    "duracaoSeg": 62.609,
+    "credito": {
+      "autor": "Sintetizado para este projeto",
+      "licenca": "Sem direitos de terceiros",
+      "url": ""
+    }
+  },
+  {
+    "id": "nevoa",
+    "titulo": "Névoa",
+    "caracter": "ambiente",
+    "arquivo": "/audio/03-nevoa.mp3",
+    "mapa": "/audio/03-nevoa.map.json",
+    "duracaoSeg": 68.571,
+    "credito": {
+      "autor": "Sintetizado para este projeto",
+      "licenca": "Sem direitos de terceiros",
+      "url": ""
+    }
+  }
+]

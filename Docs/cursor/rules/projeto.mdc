@@ -1,0 +1,59 @@
+---
+description: Riscos que Dançam — conceito, stack e as proibições do projeto
+alwaysApply: true
+---
+
+# Riscos que Dançam
+
+Protótipo acadêmico: a pessoa escuta uma música e desenha o que percebe. A animação
+que ela cria roda sobre o áudio original.
+
+**A regra que organiza tudo: o áudio é sempre a faixa original. Nada do que a pessoa
+desenha produz som.** Ela compõe a resposta visual ao som, não o som.
+
+## Stack instalada
+
+Next.js **16** (App Router) + React 19 + TypeScript · **Tailwind 4** · Canvas 2D puro ·
+Web Audio API pura · Zustand · Vercel. Sem backend, sem banco, sem login.
+
+> **Next 16 e Tailwind 4 são recentes o bastante para estarem fora do seu treino.**
+> Antes de usar qualquer API do Next, leia `node_modules/next/dist/docs/` — o próprio
+> framework pede isso no `AGENTS.md`. Não invente assinatura de API por memória, e não
+> assuma convenções do Next 13/14/15.
+
+## Tailwind 4: não existe tailwind.config.ts
+
+Os tokens vivem no `@theme` de `src/app/globals.css` e viram utilitários sozinhos:
+`--color-palco` gera `bg-palco`; `--text-rotulo` gera `text-rotulo`; `--radius-lg`
+gera `rounded-lg`. Não crie `tailwind.config.ts` nem `@tailwind base/components/
+utilities` — a diretiva é `@import "tailwindcss"`.
+
+## Proibido
+
+- Instalar Tone.js, p5.js, p5.sound, howler ou qualquer biblioteca de áudio
+- Gerar som: nenhum sintetizador, nenhuma nota, nenhuma escala musical
+- Rodar FFT ou AnalyserNode no navegador — o `.map.json` já traz tudo, pré-calculado
+- Acumular tempo entre quadros — a posição vem sempre de `ctx.currentTime`
+- Guardar estado mutável nos comportamentos — quebra o scrub e o determinismo
+- Exigir BPM ou tonalidade de uma faixa — são informativos, nunca requisito
+- MediaRecorder, WebM ou GIF — o Modo Cinema substitui a exportação de vídeo
+- Supabase antes da Fase 6
+- Mais de quatro bandas de frequência
+- Grade, régua ou notação musical dentro do palco
+
+## Arquitetura
+
+`src/engine/` é TypeScript puro, ZERO React. O React monta, passa o canvas por `ref`,
+assina o store e destrói no unmount.
+
+## Antes de codar
+
+Leia `Docs/SPEC-fase-1.md` (fase atual). Arquitetura em
+`Docs/02-PRD-arquitetura-tecnica.md`; interface em `Docs/06-design-para-codigo.md`.
+
+## Convenções
+
+Nomes de domínio em português (palco, banda, comportamento, trecho, composicao,
+regiao, elemento); APIs do navegador e do React em inglês. Comentário só quando
+explica um porquê que o código não mostra. Nova dependência precisa de justificativa.
+Gerenciador de pacotes: **pnpm**.

@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# material de referência / moodboard (não usado pelo app — Canvas 2D puro,
+# sem elementos de vídeo). ~310MB de stock footage: fica fora do repositório
+# para não inflar o histórico do Git. Mantido localmente para consulta.
+/Animações/

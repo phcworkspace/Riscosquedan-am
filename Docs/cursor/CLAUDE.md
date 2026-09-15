@@ -1,30 +1,21 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
-
-<!-- Acrescente este bloco ao final do AGENTS.md do projeto, DEPOIS da linha
-     <!-- END:nextjs-agent-rules -->. O `next dev` reescreve só o bloco dele;
-     o que vier abaixo é preservado. -->
-
 # Riscos que Dançam
 
-Protótipo acadêmico de mestrado: a pessoa **escuta uma música e desenha o que
-percebe**. Ela seleciona um trecho, ouve em loop, cria elementos visuais que respondem
-a uma parte do som, e no final assiste à composição inteira rodando sobre o áudio
-original.
+Protótipo acadêmico (mestrado): a pessoa **escuta uma música e desenha o que percebe**.
+Ela seleciona um trecho, ouve em loop, cria elementos visuais que respondem a uma parte
+do som, e no final assiste à composição inteira rodando sobre o áudio original.
 
 ## A regra que organiza tudo
 
 **O áudio é sempre a faixa original. Nada do que a pessoa desenha produz som.**
 
-O que ela compõe é a *resposta visual* ao som. Isso não é detalhe de implementação — é
-o conceito do trabalho, e foi a correção que reescreveu a arquitetura inteira.
+O que ela compõe é a *resposta visual* ao som. Isso não é detalhe de implementação — é o
+conceito do trabalho, e foi a correção que reescreveu a arquitetura inteira.
+
+## Stack
+
+Next.js 15 (App Router) + TypeScript + Tailwind + shadcn/ui · **Canvas 2D puro** ·
+**Web Audio API pura** · Zustand · Vercel.
+Sem backend, sem banco, sem login, sem coleta de dados.
 
 ## Documentação (leia antes de codar)
 
@@ -34,15 +25,7 @@ o conceito do trabalho, e foi a correção que reescreveu a arquitetura inteira.
 | `Docs/02-PRD-arquitetura-tecnica.md` | Arquitetura, modelo de dados, formato do mapa |
 | `Docs/06-design-para-codigo.md` | Interface: tokens, medidas, o que é DOM e o que é canvas |
 | `Docs/04-roadmap-desenvolvimento.md` | Em que fase estamos e o que é aceite |
-
-## Stack
-
-Next 16 (App Router) + React 19 + TypeScript · Tailwind 4 · **Canvas 2D puro** ·
-**Web Audio API pura** · Zustand · Vercel · pnpm.
-Sem backend, sem banco, sem login, sem coleta de dados.
-
-Tailwind 4 não tem `tailwind.config.ts`: os tokens estão no `@theme` de
-`src/app/globals.css` e viram utilitários sozinhos.
+| `MP3/README.md` | As faixas e a ferramenta que gera o `.map.json` |
 
 ## Proibido neste projeto
 
@@ -63,11 +46,11 @@ Tailwind 4 não tem `tailwind.config.ts`: os tokens estão no `@theme` de
 ## Arquitetura
 
 ```
-src/engine/     TypeScript puro, ZERO React — Audio, Mapa, Renderizador, Entrada,
-                comportamentos, tokens, tipos
-src/store/      Zustand
+src/engine/    TypeScript puro, ZERO React — Audio, Mapa, Renderizador, Entrada,
+               comportamentos, mapping, tipos
+src/store/     Zustand
 src/components/ React + Tailwind (casca da UI)
-public/audio/   *.mp3 + *.map.json + faixas.json
+public/audio/  *.mp3 + *.map.json + faixas.json
 ```
 
 O React monta, passa o canvas por `ref`, assina o store e destrói no unmount.

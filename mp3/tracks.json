@@ -1,0 +1,143 @@
+[
+  {
+    "id": "pulso",
+    "title": "Pulso",
+    "file": "/audio/01-pulso.mp3",
+    "character": "eletrônica minimalista",
+    "bpm": 110,
+    "key": "C",
+    "mode": "minor",
+    "timeSignature": [
+      4,
+      4
+    ],
+    "bars": 32,
+    "durationSec": 69.82,
+    "structure": [
+      {
+        "section": "intro",
+        "fromBar": 0,
+        "toBar": 4
+      },
+      {
+        "section": "A",
+        "fromBar": 4,
+        "toBar": 12
+      },
+      {
+        "section": "B",
+        "fromBar": 12,
+        "toBar": 24
+      },
+      {
+        "section": "outro",
+        "fromBar": 24,
+        "toBar": 32
+      }
+    ],
+    "loopable": true,
+    "verified": {
+      "bpm": "conferido — erro 0.108",
+      "key": "por construção"
+    },
+    "credit": {
+      "author": "Sintetizado para este projeto",
+      "license": "Sem direitos de terceiros",
+      "url": ""
+    }
+  },
+  {
+    "id": "correnteza",
+    "title": "Correnteza",
+    "file": "/audio/02-correnteza.mp3",
+    "character": "instrumental orgânica",
+    "bpm": 92,
+    "key": "G",
+    "mode": "major",
+    "timeSignature": [
+      4,
+      4
+    ],
+    "bars": 24,
+    "durationSec": 62.61,
+    "structure": [
+      {
+        "section": "intro",
+        "fromBar": 0,
+        "toBar": 4
+      },
+      {
+        "section": "A",
+        "fromBar": 4,
+        "toBar": 12
+      },
+      {
+        "section": "B",
+        "fromBar": 12,
+        "toBar": 20
+      },
+      {
+        "section": "outro",
+        "fromBar": 20,
+        "toBar": 24
+      }
+    ],
+    "loopable": true,
+    "verified": {
+      "bpm": "conferido — erro 0.111",
+      "key": "por construção"
+    },
+    "credit": {
+      "author": "Sintetizado para este projeto",
+      "license": "Sem direitos de terceiros",
+      "url": ""
+    }
+  },
+  {
+    "id": "nevoa",
+    "title": "Névoa",
+    "file": "/audio/03-nevoa.mp3",
+    "character": "ambiente",
+    "bpm": 70,
+    "key": "D",
+    "mode": "minor",
+    "timeSignature": [
+      4,
+      4
+    ],
+    "bars": 20,
+    "durationSec": 68.57,
+    "structure": [
+      {
+        "section": "intro",
+        "fromBar": 0,
+        "toBar": 4
+      },
+      {
+        "section": "A",
+        "fromBar": 4,
+        "toBar": 12
+      },
+      {
+        "section": "B",
+        "fromBar": 12,
+        "toBar": 18
+      },
+      {
+        "section": "outro",
+        "fromBar": 18,
+        "toBar": 20
+      }
+    ],
+    "loopable": true,
+    "verified": {
+      "bpm": "por construção — sem ataques para conferir automaticamente",
+      "key": "por construção"
+    },
+    "credit": {
+      "author": "Sintetizado para este projeto",
+      "license": "Sem direitos de terceiros",
+      "url": ""
+    }
+  }
+]
